@@ -1,0 +1,8 @@
+{
+  /*0.MemoryCache 1.RedisCache*/
+  "Mode": "1",
+  "Redis": {
+    "Prefix": "", /*ÏîÄ¿Ç°×º*/
+    "ConnectionString": "127.0.0.1:6370,defaultDatabase=1,password=Bianhao125!@#"
+  }
+}

@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>缓存(Memory、Redis)集成注册,按配置文件依赖注入services.AddCache()</Description>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>www.billowliu.com</Copyright>
+    <PackageIcon>logo.jpg</PackageIcon>
+    <Authors>Bill.liu</Authors>
+    <Company>Bill.liu</Company>
+    <PackageReleaseNotes>static void Main(string[] args)
+        {
+            //Console.WriteLine("Hello World!");
+
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddCache();
+
+            IServiceProvider serviceProvider = services.BuildServiceProvider();
+
+            //根据配置config/Cache.json文件中的枚举Model选项自动选择(默认Redis)
+            var Cache = serviceProvider.GetService&lt;ICacheHandler&gt;();
+
+            Cache.Set("b", "v");
+
+            var value = Cache.Get("b");
+
+            Console.WriteLine(value);
+
+
+        }</PackageReleaseNotes>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
+    <Version>1.0.6</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="config\Cache.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.3" />
+    <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bill.CacheAbstract\Bill.CacheAbstract.csproj" />
+    <ProjectReference Include="..\Bill.MemoryCache\Bill.MemoryCache.csproj" />
+    <ProjectReference Include="..\Bill.RedisCache\Bill.RedisCache.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\logo.jpg">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="config\Cache.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

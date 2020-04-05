@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="config\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bill.CommonCache" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\Administrator\.nuget\packages\bill.commoncache\1.0.2\contentFiles\any\netcoreapp3.1\config\Cache.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
