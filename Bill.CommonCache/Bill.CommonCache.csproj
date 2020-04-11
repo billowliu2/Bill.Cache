@@ -7,7 +7,24 @@
     <Authors>Bill.liu</Authors>
     <Copyright>www.billowliu.com</Copyright>
     <PackageIcon>logo.jpg</PackageIcon>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
+    <Description>缓存(Memory、Redis)集成
+  //MemeoryCache
+            {
+                IMemoryCache memory = new MemoryCache(Options.Create(new MemoryCacheOptions()));
+                ICacheHandler MemoryCahce = new MemoryCacheHandler(memory);
+                MemoryCahce.Set("a", "测试内存缓存");
+                MemoryCahce.Get("a");
+                Console.WriteLine(MemoryCahce.Get("a"));
+            }
+            //RedisCache
+            {
+                var Redis = new RedisCacheHelper();
+                ICacheHandler RedisCache = new RedisCacheHandler(Redis);
+                RedisCache.Set("b","测试Redis缓存");
+                RedisCache.Get("b");
+                Console.WriteLine(RedisCache.Get("b"));
+            }</Description>
   </PropertyGroup>
 
   <ItemGroup>
